@@ -10,7 +10,8 @@ public class a8_number_of_good_components {
         }
         
         // Convert adjacency list to edges array
-        int[][] edges = {{1, 2}, {1, 3}, {4, 5},{3,2}};
+        // int[][] edges = {{1, 2}, {1, 3}, {4, 5},{3,2}}; //all good compoennet
+        int[][] edges = {{1, 2}, {1, 3}, {4, 5}}; //one good component
         int e = edges.length;
         int v = 5;
 

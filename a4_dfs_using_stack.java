@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class a4_dfs {
+public class a4_dfs_using_stack {
     private HashMap<Integer, HashMap<Integer, Integer>> map;
 
-    public a4_dfs(int v) {
+    public a4_dfs_using_stack(int v) {
         map = new HashMap<>();
         for (int i = 1; i <= v; i++) {
             map.put(i, new HashMap<>());
@@ -70,8 +70,10 @@ public class a4_dfs {
             }
         }
     }
+
+    
     public static void main(String[] args) {
-        a4_dfs g = new a4_dfs(5);
+        a4_dfs_using_stack g = new a4_dfs_using_stack(5);
         g.AddEdge(1, 4, 0);
         g.AddEdge(1, 5, 0);
         g.AddEdge(2, 3, 0);
