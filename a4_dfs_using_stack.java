@@ -1,8 +1,6 @@
 import java.util.*;
-
 public class a4_dfs_using_stack {
     private HashMap<Integer, HashMap<Integer, Integer>> map;
-
     public a4_dfs_using_stack(int v) {
         map = new HashMap<>();
         for (int i = 1; i <= v; i++) {
@@ -15,37 +13,6 @@ public class a4_dfs_using_stack {
         map.get(v2).put(v1, cost); // because it's an undirected graph
     }
 
-    public void Addvertex(int v) {
-        map.put(v, new HashMap<>());
-    }
-
-    public boolean ContainsEdge(int v1, int v2) {
-        return map.get(v1).containsKey(v2);
-    }
-
-    public boolean Containsvertex(int v1) {
-        return map.containsKey(v1);
-    }
-
-    public int noofEdge() {
-        int sum = 0;
-        for (int key : map.keySet()) {
-            sum += map.get(key).size();
-        }
-        return sum;
-    }
-
-    public void removeEdge(int v1, int v2) {
-        map.get(v1).remove(v2);
-        map.get(v2).remove(v1);
-    }
-
-    public void removevertex(int v1) {
-        for (int nbrs : map.get(v1).keySet()) {
-            map.get(nbrs).remove(v1);
-        } // doing this to remove edges in case of bidirectional graph
-        map.remove(v1);
-    }
 
     public void display() {
         for (int key : map.keySet()) {
@@ -53,7 +20,6 @@ public class a4_dfs_using_stack {
         }
     }
 
-    
     public void DFS(int src) {
         Stack<Integer> s = new Stack<>();
         s.push(src);
@@ -62,7 +28,9 @@ public class a4_dfs_using_stack {
         while (!s.isEmpty()) {
             int rv = s.pop();
             System.out.println(rv);
-            for (int nbrs : map.get(rv).keySet()) {
+            List<Integer> neighbors = new ArrayList<>(map.get(rv).keySet());
+            Collections.sort(neighbors, Collections.reverseOrder()); // Sort neighbors in reverse order
+            for (int nbrs : neighbors) {
                 if (!visited.contains(nbrs)) {
                     s.push(nbrs);
                     visited.add(nbrs); // mark the neighbor as visited
@@ -71,20 +39,15 @@ public class a4_dfs_using_stack {
         }
     }
 
-    
     public static void main(String[] args) {
         a4_dfs_using_stack g = new a4_dfs_using_stack(5);
-        g.AddEdge(1, 4, 0);
-        g.AddEdge(1, 5, 0);
-        g.AddEdge(2, 3, 0);
-        g.AddEdge(2, 5, 0);
-        g.AddEdge(3, 2, 0);
-        g.AddEdge(4, 1, 0);
-        g.AddEdge(4, 5, 0);
-        g.AddEdge(5, 1, 0);
-        g.AddEdge(5, 2, 0);
+        g.AddEdge(1, 2, 0);
+        g.AddEdge(1, 3, 0);
+        g.AddEdge(3, 5, 0);
         g.AddEdge(5, 4, 0);
+        g.AddEdge(4, 2, 0);
         g.display();
+        System.out.println("DFS starting from vertex 1:");
         g.DFS(1);
     }
 }

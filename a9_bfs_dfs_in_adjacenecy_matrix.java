@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class a9_bfs_in_adjacenecy_matrix {
+public class a9_bfs_dfs_in_adjacenecy_matrix {
     
     // Helper method for DFS
     private void printDFSUtil(int[][] adj_mat, boolean[] visited, int vertex) {
@@ -62,7 +62,7 @@ public class a9_bfs_in_adjacenecy_matrix {
             adj_mat[ev][sv] = 1;
         }
 
-        a9_bfs_in_adjacenecy_matrix graph = new a9_bfs_in_adjacenecy_matrix();
+        a9_bfs_dfs_in_adjacenecy_matrix graph = new a9_bfs_dfs_in_adjacenecy_matrix();
         System.out.println("========== Printing DFS ==========");
         graph.printDFS(adj_mat);
 
