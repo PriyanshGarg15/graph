@@ -1,10 +1,10 @@
 import java.util.*;
-public class a13_disjoint_set_sung_dfs {
+public class a13_disjoint_set_using_dfs {
     
     private int[] parent;
     private boolean[] visited;
 
-    public a13_disjoint_set_sung_dfs(int n) {
+    public a13_disjoint_set_using_dfs(int n) {
         parent = new int[n];
         visited = new boolean[n];
         for (int i = 0; i < n; i++) {
@@ -38,7 +38,7 @@ public class a13_disjoint_set_sung_dfs {
 
     public static void main(String[] args) {
         int n = 5; // Number of nodes
-        a13_disjoint_set_sung_dfs ds = new a13_disjoint_set_sung_dfs(n);
+        a13_disjoint_set_using_dfs ds = new a13_disjoint_set_using_dfs(n);
 
         List<List<Integer>> adj = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -54,9 +54,21 @@ public class a13_disjoint_set_sung_dfs {
         adj.get(4).add(3);
 
         ds.findConnectedComponents(adj);
-
         for (int i = 0; i < n; i++) {
+
             System.out.println("Node " + i + " is in component " + ds.find(i));
         }
+
+        // HashSet<Integer> hp=new HashSet<>();
+        // for (int i = 0; i < n; i++) {
+        //     hp.add(ds.find(i));
+        // }
+        // System.out.println(hp.size());
     }
 }
+
+
+
+// The code you provided is an implementation of the disjoint-set union (DSU) or union-find data structure using depth-first search (DFS)
+// While this approach works, it may not be optimal for dynamic connectivity queries (checking whether two nodes are in the same component).
+// Traditional DSU implementations with path compression and union by rank offer better performance for such queries.
