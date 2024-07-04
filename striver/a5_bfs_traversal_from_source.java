@@ -57,7 +57,6 @@ public class a5_bfs_traversal_from_source
         //see image a1 for graph see
 		g.display();
         g.BFS(1);
-        System.out.println(map);
     }
 	
 }
