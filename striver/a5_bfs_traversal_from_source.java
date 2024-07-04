@@ -1,8 +1,10 @@
+package striver;
+
 import java.util.*;
-public class a3_bfs 
+public class a5_bfs_traversal_from_source 
 {
-	private HashMap<Integer, HashMap<Integer, Integer>> map;
-	public a3_bfs(int v) 
+	private static HashMap<Integer, HashMap<Integer, Integer>> map;
+	public a5_bfs_traversal_from_source(int v) 
     {
 		map = new HashMap<>();
 		for (int i = 1; i <= v; i++) 
@@ -43,7 +45,7 @@ public class a3_bfs
     }
 
     public static void main(String[] args) {
-        a3_bfs g = new a3_bfs(7);
+        a5_bfs_traversal_from_source g = new a5_bfs_traversal_from_source(7);
         g.AddEdge(1, 4, 6);
 		g.AddEdge(1, 2, 10);
 		g.AddEdge(2, 3, 7);
@@ -52,8 +54,10 @@ public class a3_bfs
 		g.AddEdge(5, 6, 4);
 		g.AddEdge(7, 5, 2);
 		g.AddEdge(6, 7, 3);
+        //see image a1 for graph see
 		g.display();
         g.BFS(1);
+        System.out.println(map);
     }
 	
 }
