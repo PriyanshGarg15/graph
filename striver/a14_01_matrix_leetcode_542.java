@@ -1,9 +1,11 @@
+package striver;
+
 import java.util.*;
-public class test {
+public class a14_01_matrix_leetcode_542 {
 
     private static int[][] adjMatrix;
 
-    public test(int v) {
+    public a14_01_matrix_leetcode_542(int v) {
         adjMatrix = new int[v+1][v+1]; // Initialize the adjacency matrix with 0s
     }
 
@@ -77,7 +79,7 @@ public class test {
 
 
     public static void main(String[] args) {
-        test graph = new test(3);
+        a14_01_matrix_leetcode_542 graph = new a14_01_matrix_leetcode_542(3);
         graph.AddEdge(2, 2, 1);
         graph.AddEdge(3, 1, 1);
         graph.AddEdge(3, 2, 1);
