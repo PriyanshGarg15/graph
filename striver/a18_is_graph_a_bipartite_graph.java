@@ -40,11 +40,17 @@ public class a18_is_graph_a_bipartite_graph {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Enter number of vertices:");
         int n = scanner.nextInt();
-        int[][] graph = new int[n][n];
+        int[][] graph = new int[n][];
+
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+            System.out.println("Enter number of neighbors for vertex " + i + ":");
+            int numNeighbors = scanner.nextInt();
+            graph[i] = new int[numNeighbors];
+            System.out.println("Enter the neighbors:");
+            for (int j = 0; j < numNeighbors; j++) {
                 graph[i][j] = scanner.nextInt();
             }
         }
