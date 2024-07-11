@@ -4,41 +4,40 @@ import java.util.*;
 
 public class a21_find_eventual_safe_nodes {
     
-    public boolean dfs(int node, List<List<Integer>> adj, int[] visited, int[] pathVis) {
-        visited[node] = 1;
-        pathVis[node] = 1;
+    public boolean dfs(int node, List<List<Integer>> adj, boolean[] visited, boolean[] pathVisited) {
+        visited[node] = true;
+        pathVisited[node] = true;
 
         for (int neighbor : adj.get(node)) {
-            if (visited[neighbor] == 0) {
-                if (dfs(neighbor, adj, visited, pathVis)) {
+            if (visited[neighbor] == false) {
+                if (dfs(neighbor, adj, visited, pathVisited)) {
                     return true;
                 }
-            } else if (pathVis[neighbor] == 1) {
+            } else if (pathVisited[neighbor] == true) {
                 return true; // Cycle detected
             }
         }
 
-        pathVis[node] = 0;
+        pathVisited[node] = false;
         return false;
     }
 
     public List<Integer> eventualSafeNodes(int V, List<List<Integer>> adj) {
-        int[] visited = new int[V];
-        int[] pathVis = new int[V];
+        boolean[] visited = new boolean[V];
+        boolean[] pathVisited = new boolean[V];
         List<Integer> safeNodes = new ArrayList<>();
 
         for (int i = 0; i < V; i++) {
-            if (visited[i] == 0) {
-                dfs(i, adj, visited, pathVis);
+            if (visited[i] == false) {
+                dfs(i, adj, visited, pathVisited);
             }
         }
 
         for (int i = 0; i < V; i++) {
-            if (pathVis[i] == 0) {
+            if (pathVisited[i] == false) {
                 safeNodes.add(i);
             }
         }
-        Collections.sort(safeNodes);
         return safeNodes;
     }
 
