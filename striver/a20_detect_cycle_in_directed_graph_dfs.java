@@ -2,7 +2,7 @@ package striver;
 
 import java.util.*;
 
-public class a20_detect_cycle_in_directed_graph {
+public class a20_detect_cycle_in_directed_graph_dfs {
     public boolean isCyclic(int V, List<List<Integer>> adj) {
         boolean[] visited = new boolean[V];
         boolean[] pathVisited = new boolean[V];
@@ -55,7 +55,7 @@ public class a20_detect_cycle_in_directed_graph {
             adj.get(u).add(v);
         }
 
-        a20_detect_cycle_in_directed_graph solution = new a20_detect_cycle_in_directed_graph();
+        a20_detect_cycle_in_directed_graph_dfs solution = new a20_detect_cycle_in_directed_graph_dfs();
         boolean hasCycle = solution.isCyclic(V, adj);
         System.out.println("The graph has a cycle: " + hasCycle);
 

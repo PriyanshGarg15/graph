@@ -1,99 +1,279 @@
-import java.util.*;
-public class test {
+In jsx expression we can never print object in it
 
-    private static int[][] adjMatrix;
+new Date() is used to create a new Date object in JavaScript. The Date object is a built-in JavaScript object that represents a single moment in time. It provides various methods for working with dates and times.
+Ex.
+constnow = newDate(); console.log(now); // Outputs the current date and time
 
-    public test(int v) {
-        adjMatrix = new int[v+1][v+1]; // Initialize the adjacency matrix with 0s
-    }
+So;
 
-    // Method to add an edge
-    public void AddEdge(int v1, int v2, int cost) {
-        adjMatrix[v1][v2] = cost; // Add edge from v1 to v2
-        // adjMatrix[v2][v1] = cost; // Add edge from v2 to v1 (undirected)
-    }
-
-    // Method to display the graph
-    public void display() {
-        for (int i = 1; i < adjMatrix.length; i++) {
-            for (int j = 1; j < adjMatrix.length; j++) {
-                System.out.print(adjMatrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public  int[][] updateMatrix(int[][] mat) 
-    {
-        int m = mat.length;
-        int n = mat[0].length;
-        int[][] ans = new int[m+1][n+1]; // Initialize ans with 0s by default
-
-        Queue<int[]> q = new LinkedList<>();
-
-        // Initialize the queue with all 0s and mark their distances as 0
-        for (int i = 1; i < m; ++i) {
-            for (int j = 1; j < n; ++j) {
-                if (mat[i][j] == 0) {
-                    ans[i][j] = 0;
-                    q.add(new int[]{i, j});
-                } else {
-                    ans[i][j] = -1; // Initialize all non-0s with -1 to signify unvisited cells
-                }
-            }
-        }
-
-        // Directions for moving in 4 possible directions
-        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-
-        int count = 0;
-
-        // Perform BFS
-        while (!q.isEmpty()) {
-            int size = q.size();
-            count++; // Increment distance count for the next level
-            for(int k=0;k<size;k++) {
-                int[] top = q.poll();
-                int i = top[0];
-                int j = top[1];
-
-                // Check all four directions
-                for (int[] dir : directions) {
-                    int new_i = i + dir[0];
-                    int new_j = j + dir[1];
-
-                    // Check bounds and if the cell is unvisited
-                    if (new_i >= 1 && new_i < m && new_j >= 1 && new_j < n && ans[new_i][new_j] == -1) {
-                        mat[new_i][new_j] = 0; // Update mat to mark as visited
-                        ans[new_i][new_j] = count; // Update distance in ans
-                        q.add(new int[]{new_i, new_j}); // Push the cell to the queue for further processing
-                    }
-                }
-            }
-        }
-
-        return ans;
-    }
-
-
-    public static void main(String[] args) {
-        test graph = new test(3);
-        graph.AddEdge(2, 2, 1);
-        graph.AddEdge(3, 1, 1);
-        graph.AddEdge(3, 2, 1);
-        graph.AddEdge(3, 3, 1);
-        graph.display();
-        int[][] ans=new int[adjMatrix.length][adjMatrix.length];
-        ans=graph.updateMatrix(adjMatrix);
-        System.out.println();
-        for(int i=1;i<ans.length-1;i++)
-        {
-            for(int j=1;j<ans[0].length-1;j++)
-            {
-                System.out.print(ans[i][j]+" ");
-            }
-            System.out.println();
-        }
-
-    }
+function App() {
+  var x = 100;
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li><a href="#">Home ({x + 200})</a></li>
+          <li><a href="#">Images {x}</a></li>
+          <li><a href="#">Videos ({new Date()})</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h1>This is section</h1>
+      </section>
+      <footer>
+        <h1>This is footer</h1>
+      </footer>
+    </div>
+  );
 }
+export default App;
+
+
+We cant to this way as date returns  object in js
+
+
+So do this
+
+function App() {
+  var x = 100;
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li><a href="#">Home ({x + 200})</a></li>
+          <li><a href="#">Images {x}</a></li>
+          <li><a href="#">Videos ({new Date().toString()})</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h1>This is section</h1>
+      </section>
+      <footer>
+        <h1>This is footer</h1>
+      </footer>
+    </div>
+  );
+}
+export default App;
+
+
+Or use JSON.stringify
+
+function App() {
+  var x = 100;
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li><a href="#">Home ({x + 200})</a></li>
+          <li><a href="#">Images {x}</a></li>
+          <li><a href="#">Videos {JSON.stringify(new Date())}</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h1>This is section</h1>
+      </section>
+      <footer>
+        <h1>This is footer</h1>
+      </footer>
+    </div>
+  );
+}
+export default App;
+
+
+
+Code to make basic html css page in App.js
+
+
+function App() {
+  return (
+    <div>
+      <nav style={{
+        width: "100%",
+        backgroundColor: "red"
+      }}>
+        <ul style={{
+          padding: 0,
+          margin: 0,
+          display: 'flex',
+          listStyle: 'none',
+          justifyContent: 'space-evenly'
+        }}>
+          <li>
+            <a href="#" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Home</a>
+          </li>
+          <li>
+            <a href="#" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Images</a>
+          </li>
+          <li>
+            <a href="#" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Videos</a>
+          </li>
+          <li>
+            <a href="#" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Movies</a>
+          </li>
+          <li>
+            <a href="#" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Contact us</a>
+          </li>
+        </ul>
+      </nav>
+      <section style={{
+        width: '75%',
+        padding: 34,
+        background: '#f5f5f5',
+        margin: '48px auto',
+        textAlign:'center'
+      }}>
+        <h1>This is section</h1>
+      </section>
+      <footer style={{
+        background: '#323232',
+        textAlign: 'center',
+        color: 'white',
+        padding: 100
+      }}>
+        <h1>This is footer</h1>
+      </footer>
+    </div>
+  );
+}
+export default App;
+
+![image](https://github.com/PriyanshGarg15/React_2.0/assets/116974262/79f2b328-5496-47a2-81bd-d722099c93ee)
+
+
+
+
+Rememebr=we should not use <a> tag in react
+
+In React, it is generally not recommended to use the <a> tag for internal navigation because it causes a full page reload, which defeats the purpose of a single-page application (SPA). Instead, you should use a component that integrates with React's routing system, such as the <Link> component from the react-router-dom library.
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function App() {
+  var x = 100;
+
+  return (
+    <div>
+      <nav style={{
+        width: "100%",
+        backgroundColor: "red"
+      }}>
+        <ul style={{
+          padding: 0,
+          margin: 0,
+          display: 'flex',
+          listStyle: 'none',
+          justifyContent: 'space-evenly'
+        }}>
+          <li>
+            <Link to="/" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Home ({x + 200})</Link>
+          </li>
+          <li>
+            <Link to="/images" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Images {x}</Link>
+          </li>
+          <li>
+            <Link to="/videos" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Videos ({new Date().toString()})</Link>
+          </li>
+          <li>
+            <Link to="/movies" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Movies</Link>
+          </li>
+          <li>
+            <Link to="/contact" style={{
+              textDecoration: 'none',
+              color: 'white',
+              padding: '8px',
+              display: 'block',
+              fontSize: 18
+            }}>Contact us</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <section style={{
+        width: '75%',
+        padding: 34,
+        background: '#f5f5f5',
+        margin: '48px auto'
+      }}>
+        <h1>This is section</h1>
+      </section>
+
+      <footer style={{
+        background: '#323232',
+        textAlign: 'center',
+        color: 'white',
+        padding: 100
+      }}>
+        <h1>This is footer</h1>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+But we will not do this way as a single component(App.js) as it create a lot messyness we will make different components:-
