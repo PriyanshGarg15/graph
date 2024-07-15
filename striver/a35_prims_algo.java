@@ -5,7 +5,6 @@ import java.util.*;
 class Edge {
     int targetNode;
     int distanceFromNode;
-
     // forming edge
     Edge(int targetNode, int distanceFromNode) {
         this.targetNode = targetNode;
@@ -34,6 +33,7 @@ class Graph {
 
     public int mst() {
         int minCost = 0;
+        //doing for non connected graphs
         for (int i = 0; i < nodes; i++) {
             if (!visited[i]) {
                 minCost += minimumSpanningTreeUnweightedGraph(i);

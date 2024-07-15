@@ -1,12 +1,10 @@
-package striver;
-
 import java.util.*;
 
-public class a4_graph_representation_using_list_also_having_weight {
+public class WeightedGraph {
 
     public static List<List<Pair>> adjList;
 
-    public a4_graph_representation_using_list_also_having_weight(int vertices) {
+    public WeightedGraph(int vertices) {
         adjList = new ArrayList<>(vertices);
         for (int i = 0; i < vertices; i++) {
             adjList.add(new ArrayList<>());
@@ -38,7 +36,7 @@ public class a4_graph_representation_using_list_also_having_weight {
 
     public static void main(String[] args) {
         int vertices = 5;
-        a4_graph_representation_using_list_also_having_weight a = new a4_graph_representation_using_list_also_having_weight(vertices);
+        WeightedGraph a = new WeightedGraph(vertices);
 
         // Add edges
         a.addEdge(0, 1, 2);
