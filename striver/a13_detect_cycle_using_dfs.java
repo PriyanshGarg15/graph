@@ -51,7 +51,7 @@ public class a13_detect_cycle_using_dfs {
                 if (dfs(neighbor, visited, parent)) {
                     return true;
                 }
-            } else if (!parent.get(node).equals(neighbor)) {
+            } else if (!parent.get(neighbor).equals(node)) {
                 // Found a back edge, cycle detected
                 return true;
             }

@@ -55,7 +55,7 @@ public class a12_detect_cycle_using_bfs {
                     visited.add(neighbor);
                     queue.add(neighbor);
                     parent.put(neighbor, current);
-                } else if (neighbor != parent.get(current)) {
+                } else if (current != parent.get(neighbor)) {
                     // Found a back edge, cycle detected
                     return true;
                 }
