@@ -5,9 +5,9 @@ import java.util.*;
 public class a29_shortest_path_in_directed_acyclic_graph {
 
     public static class Edge {
-        int nodee, weight;
-        Edge(int nodee, int weight) {
-            this.nodee = nodee;
+        int connect_node, weight;
+        Edge(int connect_node, int weight) {
+            this.connect_node = connect_node;
             this.weight = weight;
         }
     }
@@ -17,7 +17,7 @@ public class a29_shortest_path_in_directed_acyclic_graph {
         int[] inDegree = new int[numVertices];
         for (List<Edge> edges : graph) {
             for (Edge edge : edges) {
-                inDegree[edge.nodee]++;
+                inDegree[edge.connect_node]++;
             }
         }
 
@@ -34,9 +34,9 @@ public class a29_shortest_path_in_directed_acyclic_graph {
             topoOrder.add(node);
 
             for (Edge edge : graph.get(node)) {
-                inDegree[edge.nodee]--;
-                if (inDegree[edge.nodee] == 0) {
-                    queue.offer(edge.nodee);
+                inDegree[edge.connect_node]--;
+                if (inDegree[edge.connect_node] == 0) {
+                    queue.offer(edge.connect_node);
                 }
             }
         }
@@ -57,8 +57,8 @@ public class a29_shortest_path_in_directed_acyclic_graph {
         for (int node : topoOrder) {
             if (dist[node] != Integer.MAX_VALUE) {
                 for (Edge edge : graph.get(node)) {
-                    if (dist[node] + edge.weight < dist[edge.nodee]) {
-                        dist[edge.nodee] = dist[node] + edge.weight;
+                    if (dist[node] + edge.weight < dist[edge.connect_node]) {
+                        dist[edge.connect_node] = dist[node] + edge.weight;
                     }
                 }
             }
