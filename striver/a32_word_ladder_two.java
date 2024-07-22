@@ -1,3 +1,4 @@
+//WILL GIVE TLE IN LEETCODE !!
 package striver;
 
 import java.util.*;
@@ -60,9 +61,10 @@ public class a32_word_ladder_two {
             String lastWord = path.get(path.size() - 1);
 
             // If we reached the target word, add the path to the result
-            if (lastWord.equals(targetWord)) {
-                    result.add(new ArrayList<>(path));
-                }
+            if (lastWord.equals(targetWord)) 
+            {
+                result.add(new ArrayList<>(path));
+            }
             
 
             // Explore all possible one-character transformations
