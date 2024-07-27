@@ -1,24 +1,15 @@
-//tc o(v+e)
 package striver;
 import java.util.*;
 
 public class a24_cycle_detection_in_directed_graph_susing_bfs_toposort {
-    private List<List<Integer>> adjList;
-    private int vertices;
+    private static List<List<Integer>> adjList;
+    private static int vertices;
 
-    public a24_cycle_detection_in_directed_graph_susing_bfs_toposort(int vertices) {
-        this.vertices = vertices;
-        adjList = new ArrayList<>(vertices);
-        for (int i = 0; i < vertices; i++) {
-            adjList.add(new ArrayList<>());
-        }
-    }
-
-    public void addEdge(int u, int v) {
+    public static void addEdge(int u, int v) {
         adjList.get(u).add(v);
     }
 
-    public List<Integer> topologicalSort() {
+    public static List<Integer> topologicalSort() {
         int[] inDegree = new int[vertices];
         for (int i = 0; i < vertices; i++) {
             for (int neighbor : adjList.get(i)) {
@@ -55,28 +46,31 @@ public class a24_cycle_detection_in_directed_graph_susing_bfs_toposort {
     }
 
     public static void main(String[] args) {
-        int vertices = 6; // Number of vertices
-        a24_cycle_detection_in_directed_graph_susing_bfs_toposort graph = new a24_cycle_detection_in_directed_graph_susing_bfs_toposort(vertices);
+        vertices = 6; // Number of vertices
+        adjList = new ArrayList<>(vertices);
+        for (int i = 0; i < vertices; i++) {
+            adjList.add(new ArrayList<>());
+        }
 
         // Add edges (directed graph)
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 1);
-        graph.addEdge(4, 0);
-        graph.addEdge(4, 1);
-        graph.addEdge(5, 0);
-        graph.addEdge(5, 2);
+        addEdge(2, 3);
+        addEdge(3, 1);
+        addEdge(4, 0);
+        addEdge(4, 1);
+        addEdge(5, 0);
+        addEdge(5, 2);
 
         // Print adjacency list
         for (int i = 0; i < vertices; i++) {
             System.out.print("Adjacency list of vertex " + i + ": ");
-            for (int neighbor : graph.adjList.get(i)) {
+            for (int neighbor : adjList.get(i)) {
                 System.out.print(neighbor + " ");
             }
             System.out.println();
         }
 
         // Perform topological sort
-        List<Integer> topologicalOrder = graph.topologicalSort();
+        List<Integer> topologicalOrder = topologicalSort();
         System.out.println("Topological Sort Order: " + topologicalOrder);
     }
 }

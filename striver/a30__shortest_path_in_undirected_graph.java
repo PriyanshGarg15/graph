@@ -3,7 +3,7 @@ package striver;
 import java.util.*;
 
 public class a30__shortest_path_in_undirected_graph {
-    public int[] shortestPath(int[][] edges, int n, int m, int src) {
+    public static int[] shortestPath(int[][] edges, int n, int m, int src) {
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         
         // Initialize the adjacency list
@@ -43,14 +43,13 @@ public class a30__shortest_path_in_undirected_graph {
     }
 
     public static void main(String[] args) {
-        a30__shortest_path_in_undirected_graph sol = new a30__shortest_path_in_undirected_graph();
         int[][] edges = {{0, 1}, {0, 2}, {1, 2}, {1, 3}};
         int n = 4;
         int m = 4;
         int src = 0;
         // n is the number of vertices (or nodes) in the graph.
         // m is the number of edges in the graph.
-        int[] result = sol.shortestPath(edges, n, m, src);
+        int[] result = shortestPath(edges, n, m, src);
         
         System.out.println("Shortest distances from node " + src + ": " + Arrays.toString(result));
     }
