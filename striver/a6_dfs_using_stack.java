@@ -31,7 +31,7 @@ public class a6_dfs_using_stack {
             int rv = s.pop();
             System.out.println(rv);
             List<Integer> neighbors = new ArrayList<>(map.get(rv).keySet());
-            Collections.sort(neighbors, Collections.reverseOrder()); // Sort neighbors in reverse order
+            Collections.reverse(neighbors);
             for (int nbrs : neighbors) {
                 if (!visited.contains(nbrs)) {
                     s.push(nbrs);

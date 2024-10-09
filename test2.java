@@ -1,14 +1,10 @@
 public class test2
 {
-    static class Student
-    {
-        int rollno;
-        String name;
+    static{
+        System.out.println("hello");
     }
     public static void main(String[] args) {
-        Student s1=new Student();
-        s1.rollno=12;
-        s1.name="priyansh";
+        Integer s1=new Integer(5);
         System.out.println(s1);
     }
 }

@@ -4,6 +4,14 @@ import java.util.*;
 
 public class a4_graph_representation_using_list_also_having_weight {
 
+    public class Pair {
+        int node, weight;
+        Pair(int node, int weight) {
+            this.node = node;
+            this.weight = weight;
+        }
+    }
+
     public static List<List<Pair>> adjList;
 
     public a4_graph_representation_using_list_also_having_weight(int vertices) {
@@ -13,13 +21,7 @@ public class a4_graph_representation_using_list_also_having_weight {
         }
     }
 
-    public static class Pair {
-        int node, weight;
-        Pair(int node, int weight) {
-            this.node = node;
-            this.weight = weight;
-        }
-    }
+    
 
     public void addEdge(int src, int dest, int weight) {
         adjList.get(src).add(new Pair(dest, weight));
