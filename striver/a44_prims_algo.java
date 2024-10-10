@@ -69,7 +69,7 @@ class Graph {
     }
 }
 
-public class a35_prims_algo {
+public class a44_prims_algo {
     public static void main(String[] args) {
         int nodes = 5;
         Graph a = new Graph(nodes);

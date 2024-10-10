@@ -2,7 +2,7 @@ package striver;
 
 import java.util.*;
 
-public class a35_shortest_path_in_weighted_graph {
+public class a37_shortest_path_in_weighted_graph {
 
     // Class to represent a graph edge
     static class Edge {
