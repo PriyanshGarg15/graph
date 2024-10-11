@@ -40,7 +40,11 @@ public class a36_shortest_path_in_a_maze {
             int row = current.row;
             int col = current.col;
             int distance = current.dist;
-
+            
+            // the algorithm will still give the shortest distance even though it immediately returns when it reaches the final point. The reason for this 
+            // is that Dijkstra’s algorithm (with a priority queue) always processes the current shortest path first.
+            //although in this question distance doesnt matter becz we are considering 1 distance movement so we could also used queue no differnce !
+            
             if (row == n - 1 && col == n - 1) {
                 return distance;
             }
