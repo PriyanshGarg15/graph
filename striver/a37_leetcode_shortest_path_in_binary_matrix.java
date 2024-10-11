@@ -1,8 +1,10 @@
+//same just no source and des here we have start and end and we can travel in 8 directiosn that it !
+//here 0 means we can proceed and 1 means we cant also to reach inrial also +1 distance is needed !
 package striver;
 
 import java.util.*;
 
-public class a36_shortest_path_in_a_maze {
+public class a37_leetcode_shortest_path_in_binary_matrix {
     public class Pair implements Comparable<Pair> {
         int row, col, dist;
         Pair(int row, int col, int dist) {
@@ -64,7 +66,7 @@ public class a36_shortest_path_in_a_maze {
     }
 
     public static void main(String[] args) {
-        a36_shortest_path_in_a_maze sol = new a36_shortest_path_in_a_maze();
+        a37_leetcode_shortest_path_in_binary_matrix sol = new a37_leetcode_shortest_path_in_binary_matrix();
         int[][] grid1 = {{0,1},{1,0}};
         System.out.println(sol.shortestPathBinaryMatrix(grid1)); 
         int[][] grid2 = {{0,0,0},{1,1,0},{1,1,0}};
