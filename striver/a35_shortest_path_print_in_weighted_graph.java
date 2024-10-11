@@ -51,8 +51,8 @@ public class a35_shortest_path_print_in_weighted_graph
             int node = it.vertex;
             int dis = it.distance; 
             for (Pair iter : adj.get(node)) {
-                int adjNode = iter.distance; 
-                int edW = iter.vertex;
+                int edW = iter.distance; 
+                int adjNode = iter.vertex;
                 if (dis + edW < dist[adjNode]) {
                     dist[adjNode] = dis + edW;
                     pq.add(new Pair(dis + edW, adjNode)); 
